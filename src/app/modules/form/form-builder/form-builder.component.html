@@ -1,0 +1,10 @@
+ <mat-card class="col-sm-12">
+  <mat-card-title>Dynamic Forms</mat-card-title>
+  <mat-card-content>
+    <ng-container *ngIf="jsonFields.length > 0">
+    <dynamic-form-builder [jsonFields]="getFields()" (onSubmit)="reviewAnswer($event)"></dynamic-form-builder>
+  </ng-container>
+  </mat-card-content>
+</mat-card>
+<hr>
+<pre>{{answer | json}}</pre>

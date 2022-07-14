@@ -1,0 +1,7 @@
+<section class="section" [formGroup]="form">
+  <b>{{control.question}}</b>
+  <div *ngFor="let option of control.options">
+    <mat-checkbox  [formControlName]="option.key">{{option.label}}</mat-checkbox>
+  </div>
+</section>
+

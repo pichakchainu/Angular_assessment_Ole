@@ -1,13 +1,8 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <div *ngFor="let control of jsonFormData?.controls">
-    <!-- <field-builder [field]="control" [form]="form"></field-builder> -->
-    <mat-form-field *ngIf="control.type === 'text'" class="example-full-width" appearance="fill">
-      <mat-label>{{ control.label }}</mat-label>
-      <input matInput [formControlName]="control.name" [value]="control.value">
-    </mat-form-field>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit.emit(this.myForm.value)">
+  <div *ngFor="let control of jsonFields">
+    <field-builder [field]="control" [form]="myForm"></field-builder>
   </div>
-  <!-- <input *ngIf="!field.multiline" [attr.type]="field.type" class="form-control"  [id]="field.name" [name]="field.name" [formControlName]="field.name">
-  <textarea *ngIf="field.multiline" [class.is-invalid]="isDirty && !isValid" [formControlName]="field.name" [id]="field.name"
-  rows="9" class="form-control" [placeholder]="field.placeholder"></textarea> -->
-  <button type="submit">Submit</button>
+  <div class="text-right">
+    <button mat-flat-button color="primary" type="submit">Review my answers ></button>
+  </div>
 </form>

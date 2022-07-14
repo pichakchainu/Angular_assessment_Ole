@@ -11,16 +11,17 @@ export interface JsonFormValidators {
 }
 
 export interface JsonFormControlOptions {
-  key?: string;
-  label?: string;
+  key: string;
+  label:string,
+  value: boolean;
 }
 
 export interface JsonFormControls {
-  name: string;
-  label: string;
+  key: string;
   value: string;
   type: string;
-  options?: JsonFormControlOptions;
+  question:string;
+  options?: JsonFormControlOptions[];
   validators: JsonFormValidators;
 }
 export interface JsonFormData {

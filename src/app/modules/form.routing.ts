@@ -1,20 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DynamicFormBuilderComponent } from './form/dynamic-form-builder/dynamic-form-builder.component';
-import { FormComponent } from './form/form.component';
+import { FormBuilderComponent } from './form/form-builder/form-builder.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: FormComponent,
-    children: [
-      {
-        path: 'builder',
-        component: DynamicFormBuilderComponent,
-
-      },
-
-    ]
+    path: 'builder',
+    component: FormBuilderComponent
   }
 ];
 

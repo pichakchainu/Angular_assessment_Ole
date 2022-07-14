@@ -1,3 +1,9 @@
-<p>
-  textbox works!
-</p>
+<form [formGroup]="form">
+  <mat-label><b>{{control.question}}</b></mat-label>
+  <mat-form-field class="full-width" appearance="fill">
+    <textarea matInput [formControlName]="control.key" [value]="control.value"></textarea>
+    <mat-error *ngIf="form.hasError('required')">
+      {{control.key}} is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
