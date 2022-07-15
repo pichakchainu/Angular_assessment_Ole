@@ -24,7 +24,6 @@ export class DynamicFormBuilderComponent implements OnInit {
 
 
   submit() {
-    console.log('Form values: ', this.form.value);
     this.onSubmit.emit(this.form.value)
   }
 

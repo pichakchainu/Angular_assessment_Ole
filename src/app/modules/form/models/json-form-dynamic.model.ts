@@ -24,6 +24,7 @@ export interface JsonFormControls {
   options?: JsonFormControlOptions[];
   validators: JsonFormValidators;
 }
+
 export interface JsonFormData {
   controls: JsonFormControls[];
 }

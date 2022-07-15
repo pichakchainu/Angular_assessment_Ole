@@ -12,10 +12,24 @@
       <mat-label>Type question here</mat-label>
       <textarea matInput [(ngModel)]="item.question"></textarea>
     </mat-form-field>
-    <ng-container *ngSwitchCase="'checkbox-list'">checkbox list</ng-container>
+    <ng-container *ngSwitchCase="'checkbox-list'">
+      <div *ngFor="let answer of questionAnswers; index as i">
+                    <mat-form-field class="col-sm-12" appearance="fill">
+                      <mat-label>Add Answer Option</mat-label>
+                      <input matInput [(ngModel)]="questionAnswers[i].label">
+                    </mat-form-field>
+      </div>
+      <button mat-button color="primary" (click)="addAnswer()">+ Add another answer</button>
+    </ng-container>
   </div>
+  <ul>
+    <li *ngFor="let item of errors" class="error-message">
+      {{item}}
+    </li>
+  </ul>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button color="primary" [mat-dialog-close]="onSubmit()" cdkFocusInitial>Submit</button>
+  <button mat-button color="primary"  (click)="onSubmit()" cdkFocusInitial>Submit</button>
 </mat-dialog-actions>

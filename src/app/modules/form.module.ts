@@ -14,6 +14,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import { FormBuilderComponent } from './form/form-builder/form-builder.component';
 import { DialogQuestionComponent } from './form/dialog-question/dialog-question.component';
+import { FormAnswerComponent } from './form/form-answer/form-answer.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { DialogQuestionComponent } from './form/dialog-question/dialog-question.
     CheckBoxListComponent,
     FieldBuilderComponent,
     FormBuilderComponent,
-    DialogQuestionComponent
+    DialogQuestionComponent,
+    FormAnswerComponent
   ]
 })
 export class FormModule { }

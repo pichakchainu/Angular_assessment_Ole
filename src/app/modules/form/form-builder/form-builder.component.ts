@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
+import { NavigationExtras, Router } from '@angular/router';
 import { DialogQuestionComponent } from '../dialog-question/dialog-question.component';
+import { FormAnswer } from '../models/form-answer.model';
 import { JsonFormControls } from '../models/json-form-dynamic.model';
 import { DynamicBuildFormsService } from '../service/dynamic-build-forms.service';
 
@@ -13,7 +15,7 @@ import { DynamicBuildFormsService } from '../service/dynamic-build-forms.service
 export class FormBuilderComponent implements OnInit {
 
   myForm: FormGroup = this.fb.group({});
-  jsonFields:JsonFormControls[]=[];
+  jsonFields:JsonFormControls[] =[];
   // [
   //   {
   //     key: 'key1',
@@ -51,18 +53,15 @@ export class FormBuilderComponent implements OnInit {
   //   }
   //   }
   // ];
-  answer:any;
   constructor(
     private dialog: MatDialog,
     private fb: FormBuilder,
-    private dynamicBuildFormsService:DynamicBuildFormsService) { }
+    private dynamicBuildFormsService:DynamicBuildFormsService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
-  // getFields(){
-  //   return this.jsonFields
-  // }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogQuestionComponent);
@@ -75,7 +74,29 @@ export class FormBuilderComponent implements OnInit {
   }
 
   reviewAnswer(event: any) {
-    console.log('Form : ', event);
-    this.answer=event;
+    let item:FormAnswer[]=[];
+    for (const field of this.jsonFields) {
+      switch (field.type) {
+        case 'text':
+          item.push({
+            type:field.type,
+            question:field.question,
+            value:event[field.key]
+          })
+          break;
+        case 'checkbox-list':
+          const itemCheckboxList:FormAnswer ={
+            type:field.type,
+            question:field.question,
+            options:[]
+          }
+          itemCheckboxList.options=field.options.filter(x=>event[field.key][x.key]).map(x=>({value:x.label}));
+
+          item.push(itemCheckboxList);
+          break;
+
+      }
+    }
+    this.router.navigate(['form/answer'], { queryParams: { data: JSON.stringify(item) } });
   }
 }

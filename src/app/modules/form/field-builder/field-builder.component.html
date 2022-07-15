@@ -3,6 +3,6 @@
   <div class="col-md-9" [ngSwitch]="field.type">
     <textbox *ngSwitchCase="'text'" [control]="field" [form]="form"></textbox>
     <checkbox-list *ngSwitchCase="'checkbox-list'" [control]="field" [form]="form.controls[field.key]"></checkbox-list>
-    <!-- <div class="alert alert-danger" *ngIf="!isValid && isDirty">{{field.key}} is required</div> -->
+    <div class="alert alert-danger" *ngIf="!isValid && isDirty">{{field.key}} is required</div>
   </div>
 </div>

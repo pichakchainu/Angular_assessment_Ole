@@ -1,0 +1,19 @@
+<mat-card class="col-sm-12">
+  <mat-card-title>Answer</mat-card-title>
+  <mat-card-content>
+    <ng-container *ngIf="answers.length > 0">
+      <div *ngFor="let answer of answers; index as i">
+        <div class="col-md-9" [ngSwitch]="answer.type">
+          <b>{{answer.question}}</b>
+          <p *ngSwitchCase="'text'">{{answer.value}}</p>
+          <ul *ngSwitchCase="'checkbox-list'">
+              <li *ngFor="let option of answer.options">{{option.value}}</li>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+  <div>
+    <button mat-stroked-button (click)="backToBuilder()">Back to Forms Builder</button>
+  </div>
+  </mat-card-content>
+</mat-card>
