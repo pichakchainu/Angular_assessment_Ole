@@ -2,8 +2,11 @@
   <mat-card-title>Dynamic Forms</mat-card-title>
   <mat-card-content>
     <ng-container *ngIf="jsonFields.length > 0">
-    <dynamic-form-builder [jsonFields]="getFields()" (onSubmit)="reviewAnswer($event)"></dynamic-form-builder>
+    <dynamic-form-builder [jsonFields]="jsonFields" [form]="myForm" (onSubmit)="reviewAnswer($event)"></dynamic-form-builder>
   </ng-container>
+  <div>
+    <button mat-stroked-button (click)="openDialog()">Add new question</button>
+  </div>
   </mat-card-content>
 </mat-card>
 <hr>

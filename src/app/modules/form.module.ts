@@ -10,7 +10,11 @@ import { FieldBuilderComponent } from './form/field-builder/field-builder.compon
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 import { FormBuilderComponent } from './form/form-builder/form-builder.component';
+import { DialogQuestionComponent } from './form/dialog-question/dialog-question.component';
+
 
 @NgModule({
   imports: [
@@ -21,14 +25,17 @@ import { FormBuilderComponent } from './form/form-builder/form-builder.component
     FormsModule,
     MatInputModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   declarations: [
     DynamicFormBuilderComponent,
     TextBoxComponent,
     CheckBoxListComponent,
     FieldBuilderComponent,
-    FormBuilderComponent
+    FormBuilderComponent,
+    DialogQuestionComponent
   ]
 })
 export class FormModule { }

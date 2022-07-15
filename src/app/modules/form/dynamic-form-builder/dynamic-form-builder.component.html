@@ -1,8 +1,9 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit.emit(this.myForm.value)">
-  <div *ngFor="let control of jsonFields">
-    <field-builder [field]="control" [form]="myForm"></field-builder>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div *ngFor="let control of jsonFields; index as i">
+    <pre>{{control|json}}</pre>
+    <field-builder [field]="control" [form]="form"></field-builder>
   </div>
   <div class="text-right">
-    <button mat-flat-button color="primary" type="submit">Review my answers ></button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid">Review my answers ></button>
   </div>
 </form>
